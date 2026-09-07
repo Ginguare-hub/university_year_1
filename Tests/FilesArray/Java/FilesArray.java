@@ -9,7 +9,7 @@ public class FilesArray {
 
     public static int readAndVerify(final int MIN_NUMBER, final int MAX_NUMBER, String str, Scanner scanner) {
         boolean isIncorrect;
-        int number;
+        double number;
 
         isIncorrect = true;
         number = 0;
@@ -20,7 +20,7 @@ public class FilesArray {
             isIncorrect = false;
 
             try {
-                number = Integer.parseInt(scanner.nextLine());
+                number = Double.parseDouble(scanner.nextLine());
             } catch (NumberFormatException e) {
                 isIncorrect = true;
                 System.out.println("Incorrect input, try again.");

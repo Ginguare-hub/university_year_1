@@ -1,75 +1,98 @@
-﻿import java.util.Scanner;
+﻿void main() {
+    double x;
+    double y;
+    double y_max;
+    double x_range_min, y_range_min, x_range_max, y_range_max;
+    boolean isIncorrect;
 
-public class Test {
+    x = 0;
+    y = 0;
 
-    public static int readAndVerify(final int MIN_NUMBER, final int MAX_NUMBER) {
+    static int X_RANGE_MIN = -1000;
+    y_range_min = -1000;
+    x_range_max = 1000;
+    y_range_max = 1000;
 
-        final int LOWEST_MERS = 3;
+    Scanner in = new Scanner(System.in);
 
-        boolean isIncorrect;
-        int num;
+    System.out.println("Даны координаты точки М(х,у). Определите, принадлежит, ли 
+                        данная точка замкнутомуmмножеству D.");
 
-        num = 0;
-        isIncorrect = true;
+    isIncorrect = true;
+    while (isIncorrect) {
+        System.out.print("Введите x: ");
 
-        Scanner scnr = new Scanner(System.in);
-
-        do {
-
-            System.out.print("Enter the number N: ");
-            isIncorrect = false;
-
-            try {
-                num = Integer.parseInt(scnr.nextLine());
-            } catch (NumberFormatException e) {
-                isIncorrect = true;
-                System.out.println("Incorrect input, try again.");
+        try {
+            x = in.nextDouble();
+            if (x > x_range_max || x < x_range_min) {
+                System.out.println("Значение x выходит за рамки ограничения.");
+            } else {
+                isIncorrect = false;
             }
-
-            if (!isIncorrect && (num < MIN_NUMBER || num > MAX_NUMBER)) {
-                isIncorrect = true;
-                System.out.printf("The number must fit the range [%d,%d].\n", MIN_NUMBER, MAX_NUMBER);
-                if (num < (LOWEST_MERS + 1))
-                    System.out.println("There are no prime Mersenne numbers, lower then 3.");
-            }
-
-        } while (isIncorrect);
-
-        scnr.close();
-
-        return num;
-    }
-
-
-
-    public static int[][] writeInMatrix(int n) {
-        int[][] arrayA;
-        int i;
-        int j;
-
-        i = 0;
-        j = 0;
-
-        arrayA = new int[n][n];
-
-        Scanner scanner = new Scanner(System.in);
-
-        for (i = 0; i < n; i++) {
-            for (j = 0; j < n; j++) { 
-                arrayA[i][j] = Integer.parseInt(scanner.nextLine());
-            }
+        } catch (InputMismatchException e) {
+            System.out.println("Вы ввели неверный тип данных.");
+            in.next();
         }
-
-
-        scanner.close();
-        return arrayA;
     }
 
-    public static void main(String[] args) {
+    isIncorrect = true;
+    do {
+        System.out.print("Введите y: ");
 
-        int[][] myArray;
+        try {
+            y = in.nextDouble();
+            if (y > y_range_max || y < y_range_min) {
+                System.out.println("Значение y выходит за рамки ограничения.");
+            } else {
+                isIncorrect = false;
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Вы ввели неверный тип данных.");
+            in.next();
+        }
+    } while (isIncorrect) 
 
-        myArray = writeInMatrix(readAndVerify(0, 10));
-        
+    if (x <= 2 && x >= 0) {
+        y_max = 0.5*(-1)*x + 1;
+        if (y >= 0 && y <= y_max) {
+            System.out.println("Точка M принадлежит D");
+        }
+        else {
+            System.out.println("Точка M не принадлежит D");
+        }
+    }
+    else {
+        System.out.println("Точка M не принадлежит D");
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+do {
+    System.out.print("Введите y: ");
+
+    try {
+        y = in.nextDouble();
+        if (y > y_range_max || y < y_range_min) {
+            System.out.println("Значение y выходит за рамки ограничения.");
+        } else {
+            isIncorrect = false;
+        }
+    } catch (InputMismatchException e) {
+        System.out.println("Вы ввели неверный тип данных.");
+        in.next();
+    }
+} while (isIncorrect) 
